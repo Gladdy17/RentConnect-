@@ -1,7 +1,7 @@
 import React from "react";
 import ApplyButton from "./Button Components/ApplyButton";
 
-function PropertyCard({ listing, onClick, isTenant }) {
+function PropertyCard({ listing, onClick, isTenant, onApply }) {
   //  Helper function to dynamically build Unsplash image URL
 
   const getImageURL = (type) => {
@@ -43,7 +43,7 @@ function PropertyCard({ listing, onClick, isTenant }) {
       />
       <h2 style={{ color: "black" }}>{listing.title}</h2>
       <p style={{ color: "black" }}>
-        <strong>Availability: Occupied</strong>
+      <strong>Availability: {listing.availability ? "Available" : "Occupied"}</strong>
       </p>
       <p style={{ color: "black" }}>
         <strong>{listing.price}</strong> — {listing.location}
@@ -52,7 +52,7 @@ function PropertyCard({ listing, onClick, isTenant }) {
       <p style={{ color: "black" }}>Type: {listing.propertyType}</p>
 
       {isTenant && (
-        <ApplyButton propertyId={listing.id} onClick={onClick} />
+        <ApplyButton propertyId={listing.id} onClick={onApply} />
       )}
     </div>
   );

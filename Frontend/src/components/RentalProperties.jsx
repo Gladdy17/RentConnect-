@@ -11,6 +11,18 @@ const RentalProperties = () => {
   const [selectedPropertyType, setSelectedPropertyType] = useState("");
   const [listings, setListings] = useState([]);
 
+  const checkApplicationLimit = async (userId) => {
+    try {
+      const response = await fetch(`http://localhost:3000/rental_applications/count_for_user?user_id=${userId}`);
+      const data = await response.json();
+      return data.application_count >= 3;
+    } catch (error) {
+      console.error("Error checking application count:", error);
+      alert("Unable to check your application limit at this time.");
+      return true; // block if uncertain
+    }
+  };
+
   const getProperties = async () => {
     try {
       const properties = await get_all_rental_properties();
@@ -135,7 +147,49 @@ const RentalProperties = () => {
           {filteredListings.length > 0 ? (
             filteredListings.map((listing) => {
               const handleClick = () => console.log(listing);
-              const handleApplyClick = () => handleApply(listing.id);
+
+              const handleApplyClick = async (propertyId) => {
+                console.log("👉 Sending application POST request now for property:", propertyId);
+                try {
+                  const response = await fetch(`http://localhost:3000/rental_applications/count_for_user?user_id=1`);
+                  const data = await response.json();
+              
+                  if (data.application_count >= 3) {
+                    alert("You've reached the 3-application limit. Subscribe for $5/month to apply for more.");
+                    return;
+                  }
+              
+                  const applyResponse = await fetch(`http://localhost:3000/rental_applications`, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      rental_application: {
+                        user_id: 1,
+                        rental_property_id: propertyId,
+                      },
+                    }),
+                  });
+              
+                  const contentType = applyResponse.headers.get("Content-Type");
+                  let responseData = contentType?.includes("application/json")
+                    ? await applyResponse.json()
+                    : { error: await applyResponse.text() };
+              
+                  if (applyResponse.ok) {
+                    alert("Application submitted!");
+                  } else if (applyResponse.status === 403) {
+                    alert(responseData.error || "You’ve reached your free application limit (3). Please upgrade.");
+                  } else {
+                    alert(responseData.error || "An unexpected error occurred while submitting your application.");
+                  }
+              
+                } catch (error) {
+                  console.error("🚨 Application error:", error);
+                  alert("Unable to check your application limit at this time.");
+                }
+              };
 
               return (
                 <PropertyCard
@@ -143,6 +197,7 @@ const RentalProperties = () => {
                   listing={listing}
                   onClick={handleClick}
                   onApply={handleApplyClick}
+                  isTenant={true}
                 />
               );
             })

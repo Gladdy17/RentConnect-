@@ -22,8 +22,17 @@ class RentalApplicationsController < ApplicationController
   
     # POST rental_applications
     def create
+      user_id = rental_application_params[:user_id]
+    
+      # Prevent more than 3 applications
+      if RentalApplication.where(user_id: user_id).count >= 3
+        Rails.logger.warn("⚠️ Application limit hit for user #{user_id}")
+        render json: { error: "Application limit reached. Please subscribe to apply for more properties." }, status: :forbidden
+        return
+      end
+    
       @rental_application = RentalApplication.new(rental_application_params)
-  
+    
       if @rental_application.save
         attach_documents
         render json: {
@@ -36,7 +45,7 @@ class RentalApplicationsController < ApplicationController
         render json: { errors: @rental_application.errors.full_messages }, status: :unprocessable_entity
       end
     end
-  
+
     # PUT rental_applications/:id
     def update
       if @rental_application.update(rental_application_params)
@@ -57,6 +66,15 @@ class RentalApplicationsController < ApplicationController
       @rental_application.destroy
       head :no_content
     end
+
+    def count_for_user
+      if params[:user_id].present?
+        count = RentalApplication.where(user_id: params[:user_id]).count
+        render json: { application_count: count }
+      else
+        render json: { error: 'user_id is required' }, status: :bad_request
+    end
+  end
   
     private
   
@@ -89,5 +107,4 @@ class RentalApplicationsController < ApplicationController
         @rental_application.documents.attach(doc)
       end
     end
-
 end
