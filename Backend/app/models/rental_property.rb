@@ -1,6 +1,6 @@
 class RentalProperty < ApplicationRecord
   belongs_to :user
-  has_many :images, dependent: :destroy
+  has_many_attached :images, dependent: :destroy
 
 
     # Geocoder configuration
@@ -17,5 +17,8 @@ class RentalProperty < ApplicationRecord
     def will_save_change_to_full_address?
       will_save_change_to_street? || will_save_change_to_city? ||
       will_save_change_to_province? || will_save_change_to_country?
+    end
+    def images_urls
+      images.map(&:url)
     end
 end

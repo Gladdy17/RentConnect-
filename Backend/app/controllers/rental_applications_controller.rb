@@ -96,7 +96,8 @@ class RentalApplicationsController < ApplicationController
         :years_working_at_employer,
         :payment_type,
         :user_id,
-        :rental_property_id
+        :rental_property_id,
+        :documents
       )
     end
   

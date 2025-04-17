@@ -1,0 +1,28 @@
+[1mdiff --git a/Backend/app/controllers/rental_applications_controller.rb b/Backend/app/controllers/rental_applications_controller.rb[m
+[1mindex 4609bbb..c7512d2 100644[m
+[1m--- a/Backend/app/controllers/rental_applications_controller.rb[m
+[1m+++ b/Backend/app/controllers/rental_applications_controller.rb[m
+[36m@@ -78,7 +78,8 @@[m [mclass RentalApplicationsController < ApplicationController[m
+         :years_working_at_employer,[m
+         :payment_type,[m
+         :user_id,[m
+[31m-        :rental_property_id[m
+[32m+[m[32m        :rental_property_id,[m
+[32m+[m[32m        :documents[m
+       )[m
+     end[m
+   [m
+[1mdiff --git a/Backend/app/controllers/rental_properties_controller.rb b/Backend/app/controllers/rental_properties_controller.rb[m
+[1mindex f058241..a807c9d 100644[m
+[1m--- a/Backend/app/controllers/rental_properties_controller.rb[m
+[1m+++ b/Backend/app/controllers/rental_properties_controller.rb[m
+[36m@@ -62,7 +62,8 @@[m [mend[m
+       :property_types,[m
+       :fees,[m
+       :utilities_included,[m
+[31m-      :user_id[m
+[32m+[m[32m      :user_id,[m
+[32m+[m[32m      :images[m
+     )[m
+   end[m
+ end[m
