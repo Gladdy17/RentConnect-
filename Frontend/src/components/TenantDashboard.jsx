@@ -9,8 +9,9 @@ import MyProperties from "./MyProperties";
 import ViewApplications from "./ViewApplications";
 import PropertyPage from "./PropertyPage";
 import AddProperty from "./AddProperty";
+import EditUserInfo from "./EditUserInfo";
 
-function TenantDashboard({ User, setLoggedIn }) {
+function TenantDashboard({ setUser, User, setLoggedIn }) {
 
     const location = useLocation();
     
@@ -30,6 +31,8 @@ function TenantDashboard({ User, setLoggedIn }) {
               <Route path="view-applications" element={<ViewApplications />} />
               <Route path="account-settings" element={<div>Account Settings</div>} />
               <Route path="renter-application" element={<RenterApplicationForm />} />
+              <Route path="edit-profile" element={<EditUserInfo User={User} setUser={setUser} />} />
+
             </>
           ) : (
             <>
@@ -38,7 +41,8 @@ function TenantDashboard({ User, setLoggedIn }) {
               <Route path="property/:id" element={<PropertyPage />} />
               <Route path="add-property" element={<AddProperty />}/>
               <Route path="account-settings" element={<div>Account Settings</div>} />
-              
+              <Route path="edit-profile" element={<EditUserInfo User={User} setUser={setUser} />} />
+
             </>
           )}
         </Routes>

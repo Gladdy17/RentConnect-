@@ -23,7 +23,7 @@ function App() {
       />
 
       {/* Nested dashboard route */}
-      <Route path="/dashboard/*" element={<TenantDashboard User={User} setLoggedIn={setLoggedIn} />} />
+      <Route path="/dashboard/*" element={<TenantDashboard setUser={setUser} User={User} setLoggedIn={setLoggedIn} />} />
 
       {/* Standalone routes */}
       <Route path="/applications" element={<ViewApplications />} />

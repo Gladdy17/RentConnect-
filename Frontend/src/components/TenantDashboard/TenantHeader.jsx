@@ -3,8 +3,11 @@ import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import ShareRoundedIcon from '@mui/icons-material/ShareRounded';
 import StarRating from "../StarRating"
 import "../../styles/TenantHeader.css";
+import { useNavigate } from "react-router-dom";
 
 function TenantHeader({rating}) {
+
+  const navigateUser = useNavigate()
 
   return (
     <div className="dashboard_header">
@@ -26,7 +29,7 @@ function TenantHeader({rating}) {
         <div className="header_icons">
             <EditRoundedIcon className="header_icon" sx={{fontSize: 35}} 
             style={{cursor: "pointer"}}
-            onClick={() => console.log("edit page")}
+            onClick={() => navigateUser('/dashboard/edit-profile')}
             />
             <ShareRoundedIcon className="header_icon" sx={{fontSize: 35}}
             style={{cursor: "pointer"}} 
