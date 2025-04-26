@@ -221,3 +221,15 @@ Feedback.create!([
     recipient_id: john_user.id
   }
 ])
+
+# Seed a demo tenant user for testing
+demo_user = User.find_or_initialize_by(email: "demo@example.com")
+
+demo_user.update!(
+  password: "password",
+  first_name: "Demo",
+  last_name: "User",
+  role: "tenant"
+)
+
+puts "✅ Demo user created or updated: #{demo_user.email}"
