@@ -1,5 +1,5 @@
 import React from "react";
-import ApplyButton from "./Button Components/ApplyButton";
+import ApplyButton from "./ButtonComponents/ApplyButton";
 
 function PropertyCard({ listing, onClick, isTenant }) {
   // Helper function to dynamically build Unsplash image URL

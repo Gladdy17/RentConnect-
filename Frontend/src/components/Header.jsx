@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Header.css";
-import LogoutButton from "./Button Components/LogoutButton";
+import LogoutButton from "./ButtonComponents/LogoutButton";
 
 function Header({ User, setLoggedIn }) {
   return (

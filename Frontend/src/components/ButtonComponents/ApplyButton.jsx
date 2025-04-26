@@ -16,7 +16,7 @@ function ApplyButton({ propertyId, userId: propUserId }) {
       return;
     }
 
-    navigate("/renter-application", {
+    navigate("/dashboard/renter-application", {
       state: {
         propertyId,
         userId,

@@ -1,10 +1,10 @@
 import React from "react";
 import "../styles/Sidenav.css";
-import MyProfBtn from "./Button Components/MyProfBtn";
-import ViewPropertyBtn from "./Button Components/ViewPropertyBtn";
-import AccountSettingsBtn from "./Button Components/AccountSettingsBtn";
-import MyProperties from "./Button Components/MyProperties";
-import MyApplicationsBtn from "./Button Components/MyApplicationsBtn";
+import MyProfBtn from "./ButtonComponents/MyProfBtn";
+import ViewPropertyBtn from "./ButtonComponents/ViewPropertyBtn";
+import AccountSettingsBtn from "./ButtonComponents/AccountSettingsBtn";
+import MyProperties from "./ButtonComponents/MyProperties";
+import MyApplicationsBtn from "./ButtonComponents/MyApplicationsBtn";
 
 function Sidenav({ User }) {
   return (
