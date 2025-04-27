@@ -1,7 +1,13 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../../styles/RenterApplicationForm.css";
 
 function RenterApplicationForm() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { propertyId, userId } = location.state || {};
+  console.log("🚀 Loaded with:", { propertyId, userId });
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
@@ -37,9 +43,14 @@ function RenterApplicationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
-  
+
+    if (!userId || !propertyId) {
+      alert("Missing user or property information.");
+      return;
+    }
+
     const formData = new FormData();
-  
+
     // Append all text fields
     formData.append("rental_application[first_name]", firstName);
     formData.append("rental_application[last_name]", lastName);
@@ -52,25 +63,22 @@ function RenterApplicationForm() {
     formData.append("rental_application[employer_name]", employerName);
     formData.append("rental_application[years_working_at_employer]", yearsWorking);
     formData.append("rental_application[payment_type]", paymentType);
-  
-    // Hardcoded user + property for now (can make dynamic later)
-    formData.append("rental_application[user_id]", 1);
-    formData.append("rental_application[rental_property_id]", 1);
-  
+
+    // ✅ Dynamic values from navigation state
+    formData.append("rental_application[user_id]", userId);
+    formData.append("rental_application[rental_property_id]", propertyId);
+
     // Append each document
     documents.forEach((doc) => {
       formData.append("documents[]", doc);
     });
-  
+
     try {
       const response = await fetch("http://localhost:3001/rental_applications", {
         method: "POST",
         body: formData,
       });
-  
-      console.log("Raw response status:", response.status);
-      console.log("Raw response ok:", response.ok);
-  
+
       let result = null;
       try {
         result = await response.json();
@@ -78,13 +86,13 @@ function RenterApplicationForm() {
       } catch (jsonErr) {
         console.warn("No JSON returned or failed to parse JSON:", jsonErr);
       }
-  
+
       if (response.ok) {
         alert("Application submitted successfully!");
+        navigate("/dashboard/view-applications", { state: { submitted: true } });
       } else {
         alert(`Error: ${result?.errors?.join(", ") || "Something went wrong"}`);
       }
-  
     } catch (err) {
       console.error("Submission error:", err);
       alert("Failed to submit application. Please try again.");
@@ -169,7 +177,6 @@ function RenterApplicationForm() {
 
       <div className="form-group">
         <p className="file-label">Documents (optional):</p>
-
         <div className="file-upload-wrapper">
           <button
             type="button"
@@ -182,12 +189,24 @@ function RenterApplicationForm() {
             id="documents"
             type="file"
             multiple
-            onChange={(e) => setDocuments(Array.from(e.target.files))}
+            onChange={(e) =>
+              setDocuments((prevDocs) => [...prevDocs, ...Array.from(e.target.files)])}
             className="file-input-hidden"
           />
         </div>
-      </div>
 
+        {documents.length > 0 && (
+          <div style={{ marginTop: "0.5rem", color: "#fff" }}>
+            <strong>Selected File{documents.length > 1 ? "s" : ""}:</strong>
+            <ul style={{ paddingLeft: "1rem", marginTop: "0.25rem" }}>
+              {documents.map((file, index) => (
+                <li key={index}>{file.name}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+  
       <button type="submit" className="submit-btn">Submit Application</button>
     </form>
   );

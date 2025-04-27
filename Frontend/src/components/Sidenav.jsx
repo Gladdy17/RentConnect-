@@ -1,24 +1,24 @@
 import React from "react";
 import "../styles/Sidenav.css";
-import MyprofBtn from "./Button Components/MyProfBtn";
+import MyProfBtn from "./Button Components/MyProfBtn";
 import ViewPropertyBtn from "./Button Components/ViewPropertyBtn";
 import AccountSettingsBtn from "./Button Components/AccountSettingsBtn";
 import MyProperties from "./Button Components/MyProperties";
-import MyApplicationsBtn from "./Button Components/MyApplicationsBtn"; // ✅ already imported
+import MyApplicationsBtn from "./Button Components/MyApplicationsBtn";
 
-function Sidenav({ isTenant }) {
+function Sidenav({ User }) {
   return (
     <div className="sidenav_container">
-      {isTenant ? (
+      {User.role === "tenant" ? (
         <div className="tenant">
-          <MyprofBtn to="/dashboard" />
+          <MyProfBtn to="/dashboard" />
           <ViewPropertyBtn to="/dashboard/view-properties" />
-          <MyApplicationsBtn to="/dashboard/view-applications" /> {/* ✅ New Button */}
+          <MyApplicationsBtn to="/dashboard/view-applications" />
           <AccountSettingsBtn to="/dashboard/account-settings" />
         </div>
       ) : (
-        <div className="sidenav_container landlord">
-          <MyprofBtn to="/dashboard" />
+        <div className="landlord">
+          <MyProfBtn to="/dashboard" />
           <MyProperties to="/dashboard/my-properties" />
           <AccountSettingsBtn to="/dashboard/account-settings" />
         </div>

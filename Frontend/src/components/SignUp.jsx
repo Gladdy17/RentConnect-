@@ -5,7 +5,8 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 
-function SignUp() {
+function SignUp({ User, setUser }) {
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -26,7 +27,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/users", {
+      const response = await fetch("http://localhost:3001/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,10 +41,13 @@ function SignUp() {
       }
 
       const data = await response.json();
-      console.log("User signed up successfully:", data);
+      console.log("User signed up successfully:", data.user);
+      setUser(data.user)
+      localStorage.setItem('user', JSON.stringify(data.user))
 
       // Redirect to login or dashboard after successful sign-up
       navigate("/dashboard");
+
     } catch (error) {
       console.error("Error signing up:", error);
       setError(error.message);

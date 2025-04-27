@@ -5,7 +5,7 @@ function UserReview({rating}) {
   return(
     <div className="user_review_container">
       <div className="reviewer_info">
-        <img src="" alt="" />
+        <img src="null" alt="" />
         <h3>User Name</h3>
         <StarRating 
         rating={rating}

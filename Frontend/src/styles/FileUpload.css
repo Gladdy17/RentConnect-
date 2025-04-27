@@ -4,6 +4,15 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+.add_property_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10em;
+}
+
 .container {
   background-color: #ffffff;
   max-width: 34.37em;

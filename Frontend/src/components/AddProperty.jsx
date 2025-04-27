@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { FormControl, Button, FormControlLabel, Checkbox, FormHelperText, Input, InputLabel } from '@mui/material';
+import { useNavigate } from "react-router-dom";
+import { FormControl, FormControlLabel, Checkbox, FormHelperText, Input, InputLabel, Button } from '@mui/material';
 import FileUpload from "./fileUpload";
+import '../styles/FileUpload.css';
 
-function AddProperty() {
+function AddProperty({User}) {
+
+  const navigateUser = useNavigate()
 
   const [formData, setFormData] = useState({
     property_title: "",
@@ -19,6 +23,7 @@ function AddProperty() {
   const [files, setFiles] = useState([]);
 
   const handleChange = (event) => {
+    console.log("formData", formData)
     const { id, value, type, checked } = event.target;
     setFormData({
       ...formData,
@@ -48,8 +53,7 @@ function AddProperty() {
       }
     }
 
-    // Hardcode user_id as 14
-    formPayload.append("rental_property[user_id]", 14);
+    formPayload.append("rental_property[user_id]", User.id);
 
     // Append files
     files.forEach((file) => {
@@ -78,6 +82,10 @@ function AddProperty() {
           property_address: "",
           property_types: "",
         });
+
+        alert("Property successfully created!");
+
+        navigateUser("/dashboard/my-properties")
       } else {
         console.error("Error creating property:", data);
       }
@@ -85,6 +93,7 @@ function AddProperty() {
       console.error("Error during submission:", error);
     }
   };
+      
 
   return (
     <div className="add_property_container">
@@ -117,7 +126,7 @@ function AddProperty() {
               aria-describedby="property_description_helper"
             />
             <FormHelperText id="property_description_helper">Provide a brief description of the property.</FormHelperText>
-          </FormControl>
+          </FormControl>     
 
           <FormControl margin="normal">
             <InputLabel htmlFor="property_sqft">Square Footage</InputLabel>
@@ -180,19 +189,33 @@ function AddProperty() {
           </FormControl>
 
           <FormControl margin="normal">
-            <InputLabel htmlFor="property_types">Property Type</InputLabel>
-            <Input
+            <InputLabel htmlFor="property_types"></InputLabel>
+            <select
               id="property_types"
               value={formData.property_types}
               onChange={handleChange}
-              aria-describedby="property_types_helper"
-            />
-            <FormHelperText id="property_types_helper">Enter the property type (e.g., apartment, house, etc.).</FormHelperText>
+              style={{
+                padding: "10px",
+                borderRadius: "4px",
+                border: "1px solid #ccc",
+                fontSize: "16px",
+              }}
+            >
+              <option value="" disabled>
+                Select a property type
+              </option>
+              <option value="apartment">Apartment</option>
+              <option value="house">House</option>
+              <option value="condo">Condo</option>
+              <option value="townhouse">Townhouse</option>
+              <option value="studio">Studio</option>
+            </select>
+            <FormHelperText id="property_types_helper">
+              Select the type of property (e.g., apartment, house, etc.).
+            </FormHelperText>
           </FormControl>
 
-        </div>
-
-        <FormControl margin="normal">
+          <FormControl margin="normal">
           <FormControlLabel
             control={
               <Checkbox
@@ -206,18 +229,29 @@ function AddProperty() {
           <FormHelperText id="utilities_included_helper">Check if utilities are included in the rent.</FormHelperText>
         </FormControl>
 
-        <FileUpload onFilesSelected={(selectedFiles) => setFiles([...selectedFiles])} />
-        <FormHelperText id="file_upload_helper">Upload images of the property.</FormHelperText>
+        </div>
 
-        <button
-          type="submit"
-          className="file_label"
-        >
+
+
+        {/* File Upload */}
+        <FormControl>
+          <FileUpload onFilesSelected={(selectedFiles) => setFiles([...selectedFiles])} />
+        </FormControl>
+
+        </form>
+
+        <Button
+        className="file_label"
+        onClick={handleSubmit}
+        variant="contained"
+        style={{
+          backgroundColor: "#388697"
+        }}>
           Submit New Property
-        </button>
-      </form>
+        </Button>
+
     </div>
-  )
+  );
 }
 
 export default AddProperty;

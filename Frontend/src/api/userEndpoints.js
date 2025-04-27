@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3000"; // Replace with your backend's base URL if different
+const API_BASE_URL = "http://localhost:3001"; // Replace with your backend's base URL if different
 
 // Fetch all users
 // export const getAllUsers = async () => {

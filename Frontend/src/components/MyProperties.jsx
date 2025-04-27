@@ -5,7 +5,7 @@ import { fetchPropertiesByUser } from "../api/rentalEndpoints.js";
 import { useNavigate } from "react-router-dom";
 import AddHomeIcon from '@mui/icons-material/AddHome';
 
-function MyProperties({ isTenant }) {
+function MyProperties({ isTenant, User }) {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [minPrice, setMinPrice] = useState("");
@@ -18,7 +18,7 @@ function MyProperties({ isTenant }) {
 
       const getProperties = async () => {
         try {
-          const properties = await fetchPropertiesByUser(14); // Replace with actual user ID
+          const properties = await fetchPropertiesByUser(User.id); // Replace with actual user ID
           setListings(properties);
         } catch (error) {
           console.error("Failed to fetch rental properties:", error);

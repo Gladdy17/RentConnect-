@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
-function Login({ setLoggedIn, setUser }) {
+function Login({ setUser }) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,13 +35,12 @@ function Login({ setLoggedIn, setUser }) {
       }
   
       const data = await response.json();
+      console.log("user", data.user)
       setUser(data.user)
-      setLoggedIn(true)
-      console.log(data.user)
-      console.log("User logged in successfully:", data);
-  
-      // Redirect or update state after successful login
-      // window.location.href = "/dashboard";
+      localStorage.setItem("user", JSON.stringify(data.user)) 
+      
+      signUpNavigate("/dashboard")
+
     } catch (error) {
       console.error("Error logging in:", error);
       setError("Invalid email or password. Please try again.");

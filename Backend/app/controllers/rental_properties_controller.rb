@@ -3,6 +3,9 @@ class RentalPropertiesController < ApplicationController
 
   # GET /rental_properties
   def index
+
+    ActiveStorage::Current.url_options = { host: request.base_url }
+
     if params[:user_id]
       @rental_properties = RentalProperty.where(user_id: params[:user_id])
     else
