@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_16_025106) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_26_214058) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_16_025106) do
     t.string "email"
     t.integer "income"
     t.text "references"
+    t.string "employer"
+    t.integer "monthly_income"
     t.index ["rental_property_id"], name: "index_rental_applications_on_rental_property_id"
     t.index ["user_id"], name: "index_rental_applications_on_user_id"
   end

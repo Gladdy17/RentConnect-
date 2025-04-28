@@ -5,6 +5,7 @@ import ViewPropertyBtn from "./Button Components/ViewPropertyBtn";
 import AccountSettingsBtn from "./Button Components/AccountSettingsBtn";
 import MyProperties from "./Button Components/MyProperties";
 import MyApplicationsBtn from "./Button Components/MyApplicationsBtn";
+import LandlordApplicationsBtn from "./Button Components/LandlordApplicationsBtn";
 
 function Sidenav({ User }) {
   return (
@@ -20,6 +21,7 @@ function Sidenav({ User }) {
         <div className="landlord">
           <MyProfBtn to="/dashboard" />
           <MyProperties to="/dashboard/my-properties" />
+          <LandlordApplicationsBtn to="/dashboard/landlord-applications" />
           <AccountSettingsBtn to="/dashboard/account-settings" />
         </div>
       )}

@@ -85,6 +85,7 @@ class RentalApplicationsController < ApplicationController
       :payment_type,
       :user_id,
       :rental_property_id,
+      :status,
       documents: []
     )
   end

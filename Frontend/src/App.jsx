@@ -10,6 +10,8 @@ import AddProperty from './components/AddProperty';
 import RenterApplicationForm from "./components/TenantDashboard/RenterApplicationForm";
 import SignUp from "./components/SignUp";
 import MyProperties from "./components/MyProperties";
+import LandlordApplications from "./components/TenantDashboard/LandlordApplications";
+import LandlordApplicationDetails from "./components/TenantDashboard/LandlordApplicationsDetails";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -40,6 +42,8 @@ function App() {
         <Route path="renter-application" element={<RenterApplicationForm />} />
         <Route path="add-property" element={<AddProperty User={User}/>} />
         <Route path="my-properties" element={<MyProperties User={User}/>}/>
+        <Route path="landlord-applications" element={<LandlordApplications />} />
+        <Route path="application/:id" element={<LandlordApplicationDetails />} />
         <Route path="account-settings" element={<div>Account Settings</div>} />
         <Route index element={<div>Welcome to your dashboard!</div>} />
       </Route>
