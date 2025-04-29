@@ -77,10 +77,24 @@ function Login({ setUser }) {
         />
       </div>
       {error && <p style={{ color: "red" }}>{error}</p>} {/* Display error message */}
-      <Button type="submit" variant="contained" color="primary">
+      <Button 
+        type="submit" 
+        variant="contained" 
+        style={{
+          background:'#388697',
+          margin:'1em',
+          scale:'1.1'
+          }}>
         Log In
       </Button>
-      <Button onClick={() => signUpNavigate("/sign-up")} variant="contained" color="secondary">
+      <Button 
+        onClick={() => signUpNavigate("/sign-up")} 
+        variant="contained" 
+        style={{
+          background:'#7EB77F',
+          margin:'1em',
+          scale:'1.1'
+          }}>
         Sign Up
       </Button>
     </Box>

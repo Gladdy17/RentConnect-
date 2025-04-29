@@ -14,6 +14,10 @@ function UserLocation ( { distance, setDistance } ) {
         step={150} 
         value={distance}
         onChange={(e) => setDistance(e.target.value)}
+        style={{
+          width:'40%',
+          background:'#388697'
+        }}
       />
     </div>
 
