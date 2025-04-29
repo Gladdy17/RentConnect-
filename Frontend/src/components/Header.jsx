@@ -9,15 +9,15 @@ function Header({ User, setLoggedIn }) {
       <div className="header_logo">
         <h1 className="header_title_Primary">Rent</h1>
         <h1 className="header_title_Secondary">Connect</h1>
-        {User && (
-          <>
-            <h2>
+      </div>
+      {User && (
+          <div className="logoutContainer">
+            <h2 className="userName">
               {User.first_name} {User.last_name}
             </h2>
             <LogoutButton setLoggedIn={setLoggedIn} />
-          </>
+          </div>
         )}
-      </div>
     </header>
   );
 }

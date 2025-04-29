@@ -25,6 +25,7 @@
 
 .sidenav_button:hover {
   background-color: #8e979a;
+  color: rgb(0, 0, 0);
 }
 
 .sidenav_button:active {

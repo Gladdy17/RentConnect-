@@ -12,6 +12,18 @@
   border-left: #ffffff solid 10px;
 }
 
+.logoutContainer {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin: 3em;
+}
+
+.userName {
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
 .header_logo {
   display: flex;
   padding: 1.5em;
