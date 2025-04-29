@@ -1,0 +1,8 @@
+.rentalApplicationContainer {
+  margin-left: 10em;
+}
+
+.applicationCard :hover {
+  color: red;
+}
+

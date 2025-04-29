@@ -1,6 +1,5 @@
 .dashboard_header {
   width: 90%;
-  outline: red solid 1px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
