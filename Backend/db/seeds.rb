@@ -55,47 +55,120 @@ landlord_user = User.create!(
   role: 1
 )
 
-puts "✅ Demo users created"
-
-# Create sample rental properties for landlord
-property1 = RentalProperty.create!(
-  title: "Sunny Apartment Downtown",
-  description: "Bright and spacious downtown apartment.",
-  address: "100 Main St, Cityville",
-  sq_feet: 900,
-  bedrooms: 2,
-  bathrooms: 1,
-  property_types: "Apartment",
-  fees: 1500,
-  utilities_included: true,
-  user_id: landlord_user.id
-)
-
-property2 = RentalProperty.create!(
-  title: "Cozy Suburban House",
-  description: "Family home with a backyard.",
-  address: "200 Maple Ave, Suburbia",
-  sq_feet: 1800,
-  bedrooms: 3,
-  bathrooms: 2,
-  property_types: "House",
-  fees: 2400,
-  utilities_included: false,
-  user_id: landlord_user.id
-)
-
-property3 = RentalProperty.create!(
-  title: "Modern Studio Loft",
-  description: "Stylish loft close to amenities.",
-  address: "300 King St, Uptown",
-  sq_feet: 600,
-  bedrooms: 1,
-  bathrooms: 1,
-  property_types: "Studio",
-  fees: 1200,
-  utilities_included: true,
-  user_id: landlord_user.id
-)
+RentalProperty.create!([
+  {
+    title: "Cozy Apartment Downtown",
+    description: "A beautiful 2 bedroom apartment in the heart of the city.",
+    address: "123 Main St, Vancouver, BC",
+    sq_feet: 850,
+    bedrooms: 2,
+    bathrooms: 1,
+    property_types: "Apartment",
+    fees: 2200,
+    utilities_included: true,
+    user_id: landlord_user.id,
+    latitude: 49.2827,
+    longitude: -123.1207
+  },
+  {
+    title: "Modern Condo with Ocean View",
+    description: "Luxury condo overlooking the bay, with all amenities included.",
+    address: "789 Beach Rd, Halifax, NS",
+    sq_feet: 950,
+    bedrooms: 2,
+    bathrooms: 2,
+    property_types: "Condo",
+    fees: 3200,
+    utilities_included: true,
+    user_id: landlord_user.id,
+    latitude: 44.6488,
+    longitude: -63.5752
+  },
+  {
+    title: "Spacious Family Home",
+    description: "Perfect for families, close to parks and schools.",
+    address: "456 Oak Avenue, Toronto, ON",
+    sq_feet: 2200,
+    bedrooms: 4,
+    bathrooms: 3,
+    property_types: "House",
+    fees: 3600,
+    utilities_included: false,
+    user_id: landlord_user.id,
+    latitude: 43.6510,
+    longitude: -79.3470
+  },
+  {
+    title: "Bright Loft in Montreal",
+    description: "Trendy loft space near downtown core.",
+    address: "654 Sainte-Catherine St, Montreal, QC",
+    sq_feet: 700,
+    bedrooms: 1,
+    bathrooms: 1,
+    property_types: "Loft",
+    fees: 1800,
+    utilities_included: true,
+    user_id: landlord_user.id,
+    latitude: 45.5017,
+    longitude: -73.5673
+  },
+  {
+    title: "Suburban Bungalow",
+    description: "Quiet neighborhood, large backyard.",
+    address: "987 Maple Dr, Calgary, AB",
+    sq_feet: 1600,
+    bedrooms: 3,
+    bathrooms: 2,
+    property_types: "House",
+    fees: 2800,
+    utilities_included: false,
+    user_id: landlord_user.id,
+    latitude: 51.0447,
+    longitude: -114.0719
+  },
+  {
+    title: "Luxury Penthouse",
+    description: "Top-floor penthouse suite with private rooftop terrace.",
+    address: "321 Bay Street, Toronto, ON",
+    sq_feet: 2000,
+    bedrooms: 3,
+    bathrooms: 3,
+    property_types: "Penthouse",
+    fees: 7500,
+    utilities_included: true,
+    user_id: landlord_user.id,
+    latitude: 43.6487,
+    longitude: -79.3854
+  },
+  {
+    title: "Cozy Suburban House",
+    description: "Family home with a backyard.",
+    address: "200 Maple Ave, Suburbia",
+    sq_feet: 1800,
+    bedrooms: 3,
+    bathrooms: 2,
+    property_types: "House",
+    fees: 2400,
+    utilities_included: false,
+    user_id: landlord_user.id,
+    latitude: 43.6532,
+    longitude: -79.3832  
+  },
+  {
+    title: "Modern Studio Loft",
+    description: "Stylish loft close to amenities.",
+    address: "300 King St, Uptown",
+    sq_feet: 600,
+    bedrooms: 1,
+    bathrooms: 1,
+    property_types: "Studio",
+    fees: 1200,
+    utilities_included: true,
+    user_id: landlord_user.id,
+    latitude: 43.7000,
+    longitude: -79.4000 
+},
+])
 
 puts "✅ Sample rental properties created"
 
@@ -112,7 +185,7 @@ RentalApplication.create!(
   employer_name: "DevCo Ltd.",
   years_working_at_employer: 2,
   payment_type: "Credit",
-  rental_property_id: property2.id,
+  rental_property_id: RentalProperty.find_by(title: "Cozy Apartment Downtown").id,
   user_id: demo_user.id
 )
 
@@ -128,7 +201,7 @@ RentalApplication.create!(
   employer_name: "Bob's Plumbing",
   years_working_at_employer: 5,
   payment_type: "Credit",
-  rental_property_id: property3.id,
+  rental_property_id: RentalProperty.find_by(title: "Cozy Apartment Downtown").id,
   user_id: demo_user.id
 )
 

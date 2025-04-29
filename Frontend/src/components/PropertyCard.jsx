@@ -36,13 +36,12 @@ function PropertyCard({ listing, onClick, User, isTenant }) {
       />
       <h2 style={{ color: "black" }}>{listing.title}</h2>
       <p style={{ color: "black" }}>
-        <strong>Availability:</strong> {listing.availability ? "Available" : "Occupied"}
+        {/* <strong>Availability:</strong> {listing.availability ? "Available" : "Occupied"} */}
       </p>
-      <p style={{ color: "black" }}>
-        <strong>{listing.price}</strong> — {listing.location}
-      </p>
+      <p style={{ color: "black" }}>{listing.address}</p>
       <p style={{ color: "black" }}>Bedrooms: {listing.bedrooms}</p>
       <p style={{ color: "black" }}>Type: {listing.property_types}</p>
+      <p><strong>${Math.round(listing.fees)}/ month</strong></p>
 
       {isTenant && (
         <ApplyButton
