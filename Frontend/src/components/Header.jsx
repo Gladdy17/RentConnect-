@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Header.css";
 import LogoutButton from "./Button Components/LogoutButton";
 
+
 function Header({ User, setLoggedIn }) {
 
   return (
@@ -15,7 +16,8 @@ function Header({ User, setLoggedIn }) {
             <h2 className="userName">
               {User.first_name} {User.last_name}
             </h2>
-            <LogoutButton setLoggedIn={setLoggedIn} />
+            <LogoutButton 
+              setLoggedIn={setLoggedIn} />
           </div>
         )}
     </header>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import { getUserById } from "../api/userEndpoints";
+import '../styles/UserReview.css'
 
 function UserReview({ rating, message, author_id, createdAt }) {
   const [author, setAuthor] = useState(null);

@@ -1,0 +1,21 @@
+.meet:hover {
+  color: yellow;
+}
+
+.meet::after {
+  top: 0;
+  left: 0;
+}
+
+.meet:hover::before {
+  border-top-color: yellow;
+  border-right-color: yellow;
+}
+
+.meet:hover::after {
+  border-bottom-color: yellow;
+  border-left-color: yellow;
+  transition:
+    height 0.25s ease-out,
+    width 0.25s ease-out 0.25s;
+}

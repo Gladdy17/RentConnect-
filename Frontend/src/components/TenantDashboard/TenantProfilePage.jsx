@@ -45,7 +45,6 @@ function TenantProfilePage({ User }) {
         rating={rating}
         feedbackAmount = {feedback.length}
       />
-      <ShareableLink />
       <Landlordreviews feedback={feedback} />
     </div>
   )

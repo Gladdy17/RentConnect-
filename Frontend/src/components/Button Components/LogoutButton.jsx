@@ -26,10 +26,15 @@ function LogoutButton({ setLoggedIn }) {
 
   return (
     <Button
+      className="logout"
       onClick={handleLogout}
       variant="contained"
       color="primary"
-      style={{ marginLeft: "auto" }} // Align to the right in the header
+      style={{ 
+        marginLeft: "auto",
+        backgroundColor: '#388697',
+        scale: '1.1'
+      }} // Align to the right in the header
     >
       Logout
     </Button>
