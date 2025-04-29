@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import '../../styles/LandlordApplications.css'
+import '../../styles/buttonStyles.css'
 
 const LandlordApplications = () => {
   const [applications, setApplications] = useState([]);
