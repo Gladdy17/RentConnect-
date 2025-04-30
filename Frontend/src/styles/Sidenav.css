@@ -9,6 +9,7 @@
   bottom: 0;
   height: 100vh;
   background-color: #388697;
+  z-index: 2;
 }
 
 .sidenav_button {
@@ -25,6 +26,7 @@
 
 .sidenav_button:hover {
   background-color: #8e979a;
+  color: rgb(0, 0, 0);
 }
 
 .sidenav_button:active {

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { FormControl, FormHelperText, Input, InputLabel, Button } from "@mui/material";
 import "../../styles/RenterApplicationForm.css";
 
 function RenterApplicationForm() {
+
   const location = useLocation();
   const navigate = useNavigate();
   const { propertyId, userId } = location.state || {};
@@ -99,117 +101,177 @@ function RenterApplicationForm() {
     }
   };
 
-  return (
-    <form onSubmit={handleSubmit} className="rental-form">
-      <h2>Rental Application Form</h2>
-
-      <div className="form-grid">
-        <div className="form-group">
-          <label>First Name:</label>
-          <input value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+return (
+  <div className="renter_application_container">
+    <h1>Submit Rental Application</h1>
+    <form onSubmit={handleSubmit}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
+        }}
+      >
+        <FormControl margin="normal">
+          <InputLabel htmlFor="first_name">First Name</InputLabel>
+          <Input
+            id="first_name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            aria-describedby="first_name_helper"
+          />
+          <FormHelperText id="first_name_helper">Enter your first name.</FormHelperText>
           {errors.firstName && <p className="error-text">{errors.firstName}</p>}
-        </div>
+        </FormControl>
 
-        <div className="form-group">
-          <label>Last Name:</label>
-          <input value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        <FormControl margin="normal">
+          <InputLabel htmlFor="last_name">Last Name</InputLabel>
+          <Input
+            id="last_name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            aria-describedby="last_name_helper"
+          />
+          <FormHelperText id="last_name_helper">Enter your last name.</FormHelperText>
           {errors.lastName && <p className="error-text">{errors.lastName}</p>}
-        </div>
+        </FormControl>
 
-        <div className="form-group">
-          <label>Age:</label>
-          <input type="number" value={age} onChange={(e) => setAge(e.target.value)} />
+        <FormControl margin="normal">
+          <InputLabel htmlFor="age">Age</InputLabel>
+          <Input
+            type="number"
+            id="age"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            aria-describedby="age_helper"
+          />
+          <FormHelperText id="age_helper">Enter your age.</FormHelperText>
           {errors.age && <p className="error-text">{errors.age}</p>}
-        </div>
+        </FormControl>
 
-        <div className="form-group">
-          <label>Current Address:</label>
-          <input value={currentAddress} onChange={(e) => setCurrentAddress(e.target.value)} />
+        <FormControl margin="normal">
+          <InputLabel htmlFor="current_address">Current Address</InputLabel>
+          <Input
+            id="current_address"
+            value={currentAddress}
+            onChange={(e) => setCurrentAddress(e.target.value)}
+            aria-describedby="current_address_helper"
+          />
+          <FormHelperText id="current_address_helper">Enter your current address.</FormHelperText>
           {errors.currentAddress && <p className="error-text">{errors.currentAddress}</p>}
-        </div>
+        </FormControl>
 
-        <div className="form-group">
-          <label>Province:</label>
-          <input value={province} onChange={(e) => setProvince(e.target.value)} />
+        <FormControl margin="normal">
+          <InputLabel htmlFor="province">Province</InputLabel>
+          <Input
+            id="province"
+            value={province}
+            onChange={(e) => setProvince(e.target.value)}
+            aria-describedby="province_helper"
+          />
+          <FormHelperText id="province_helper">Enter your province.</FormHelperText>
           {errors.province && <p className="error-text">{errors.province}</p>}
-        </div>
+        </FormControl>
 
-        <div className="form-group">
-          <label>City:</label>
-          <input value={city} onChange={(e) => setCity(e.target.value)} />
+        <FormControl margin="normal">
+          <InputLabel htmlFor="city">City</InputLabel>
+          <Input
+            id="city"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            aria-describedby="city_helper"
+          />
+          <FormHelperText id="city_helper">Enter your city.</FormHelperText>
           {errors.city && <p className="error-text">{errors.city}</p>}
-        </div>
+        </FormControl>
 
-        <div className="form-group">
-          <label>Country:</label>
-          <input value={country} onChange={(e) => setCountry(e.target.value)} />
+        <FormControl margin="normal">
+          <InputLabel htmlFor="country">Country</InputLabel>
+          <Input
+            id="country"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            aria-describedby="country_helper"
+          />
+          <FormHelperText id="country_helper">Enter your country.</FormHelperText>
           {errors.country && <p className="error-text">{errors.country}</p>}
-        </div>
+        </FormControl>
 
-        <div className="form-group">
-          <label>Employment Status:</label>
-          <input value={employmentStatus} onChange={(e) => setEmploymentStatus(e.target.value)} />
+        <FormControl margin="normal">
+          <InputLabel htmlFor="employment_status">Employment Status</InputLabel>
+          <Input
+            id="employment_status"
+            value={employmentStatus}
+            onChange={(e) => setEmploymentStatus(e.target.value)}
+            aria-describedby="employment_status_helper"
+          />
+          <FormHelperText id="employment_status_helper">Enter your employment status.</FormHelperText>
           {errors.employmentStatus && <p className="error-text">{errors.employmentStatus}</p>}
-        </div>
+        </FormControl>
 
-        <div className="form-group">
-          <label>Employer Name (optional):</label>
-          <input value={employerName} onChange={(e) => setEmployerName(e.target.value)} />
-        </div>
+        <FormControl margin="normal">
+          <InputLabel htmlFor="employer_name">Employer Name</InputLabel>
+          <Input
+            id="employer_name"
+            value={employerName}
+            onChange={(e) => setEmployerName(e.target.value)}
+            aria-describedby="employer_name_helper"
+          />
+          <FormHelperText id="employer_name_helper">Enter your employer's name.</FormHelperText>
+        </FormControl>
 
-        <div className="form-group">
-          <label>Years at Employer:</label>
-          <input type="number" value={yearsWorking} onChange={(e) => setYearsWorking(e.target.value)} />
+        <FormControl margin="normal">
+          <InputLabel htmlFor="years_working">Years at Employer</InputLabel>
+          <Input
+            type="number"
+            id="years_working"
+            value={yearsWorking}
+            onChange={(e) => setYearsWorking(e.target.value)}
+            aria-describedby="years_working_helper"
+          />
+          <FormHelperText id="years_working_helper">Enter the number of years you've worked at your current employer.</FormHelperText>
           {errors.yearsWorking && <p className="error-text">{errors.yearsWorking}</p>}
-        </div>
+        </FormControl>
 
-        <div className="form-group">
-          <label>Payment Type:</label>
-          <select value={paymentType} onChange={(e) => setPaymentType(e.target.value)}>
-            <option value="">Select</option>
+        <FormControl margin="normal">
+          <InputLabel htmlFor="payment_type"></InputLabel>
+          <select
+            id="payment_type"
+            value={paymentType}
+            onChange={(e) => setPaymentType(e.target.value)}
+            style={{
+              padding: "10px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              fontSize: "16px",
+            }}
+          >
+            <option value="" disabled>
+              Select a payment type
+            </option>
             <option value="credit">Credit</option>
             <option value="cheque">Cheque</option>
             <option value="cash">Cash</option>
           </select>
+          <FormHelperText id="payment_type_helper">Select your payment type.</FormHelperText>
           {errors.paymentType && <p className="error-text">{errors.paymentType}</p>}
-        </div>
+        </FormControl>
       </div>
 
-      <div className="form-group">
-        <p className="file-label">Documents (optional):</p>
-        <div className="file-upload-wrapper">
-          <button
-            type="button"
-            className="custom-file-label"
-            onClick={() => document.getElementById('documents').click()}
-          >
-            Choose File(s)
-          </button>
-          <input
-            id="documents"
-            type="file"
-            multiple
-            onChange={(e) =>
-              setDocuments((prevDocs) => [...prevDocs, ...Array.from(e.target.files)])}
-            className="file-input-hidden"
-          />
-        </div>
-
-        {documents.length > 0 && (
-          <div style={{ marginTop: "0.5rem", color: "#fff" }}>
-            <strong>Selected File{documents.length > 1 ? "s" : ""}:</strong>
-            <ul style={{ paddingLeft: "1rem", marginTop: "0.25rem" }}>
-              {documents.map((file, index) => (
-                <li key={index}>{file.name}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-  
-      <button type="submit" className="submit-btn">Submit Application</button>
+      <Button
+        type="submit"
+        variant="contained"
+        style={{
+          marginTop: "1rem",
+          backgroundColor: "#388697",
+          color: "white",
+        }}
+      >
+        Submit Application
+      </Button>
     </form>
-  );
+  </div>
+);
 }
 
 export default RenterApplicationForm;

@@ -1,6 +1,8 @@
 import React from "react";
 import ApplyButton from "./Button Components/ApplyButton";
 import { getImageURL } from "../helpers/getImageURL";
+import { createColorScheme } from "@mui/material";
+import { color } from "@mui/system";
 
 function PropertyCard({ listing, onClick, User, isTenant }) {
 

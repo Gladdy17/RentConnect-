@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import '../../styles/LandlordApplications.css'
+import '../../styles/buttonStyles.css'
 
 const LandlordApplications = () => {
   const [applications, setApplications] = useState([]);
@@ -105,7 +107,7 @@ const LandlordApplications = () => {
                 width: "100%",
                 marginTop: "0.5rem",
                 padding: "0.5rem",
-                backgroundColor: "#007bff",
+                backgroundColor: "#388697",
                 color: "white",
                 border: "none",
                 borderRadius: "4px",
@@ -117,10 +119,14 @@ const LandlordApplications = () => {
             </button>
 
             <div style={{ marginTop: "0.5rem" }}>
-              <button onClick={() => handleAccept(app.id)} style={{ marginRight: "1rem" }}>
+              <button 
+                className="acceptButton"
+                onClick={() => handleAccept(app.id)} style={{ marginRight: "1rem" }}>
                 Accept
               </button>
-              <button onClick={() => handleReject(app.id)}>
+              <button 
+                className="rejectButton"
+                onClick={() => handleReject(app.id)}>
                 Reject
               </button>
             </div>

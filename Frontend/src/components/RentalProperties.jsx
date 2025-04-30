@@ -173,11 +173,12 @@ const RentalProperties = ({ User }) => {
             }}
             style={{
               padding: "0.5rem 1rem",
-              backgroundColor: "#007bff",
+              backgroundColor: "#388697",
               color: "#fff",
               border: "none",
               borderRadius: "4px",
               cursor: "pointer",
+              scale: '1.1'
             }}
           >
             Clear Filters

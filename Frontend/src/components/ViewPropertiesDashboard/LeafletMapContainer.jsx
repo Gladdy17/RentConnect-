@@ -9,6 +9,7 @@ function LeafletMapContainer({ listings, geoLocation, onMarkerClick }) {
     
 
     return (
+        <div className='leafletContainer'>
         <MapContainer
             className="Leaflet_map"
             style={{ height: "800px" }}
@@ -56,6 +57,7 @@ function LeafletMapContainer({ listings, geoLocation, onMarkerClick }) {
                 position={[geoLocation.latitude, geoLocation.longitude]}
             />
         </MapContainer>
+        </div>
     );
 }
 

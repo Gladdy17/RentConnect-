@@ -1,5 +1,6 @@
 .tenant_profile_page {
   display: flex;
+  width: 90%;
   flex-direction: column;
   align-items: center;
   width: calc(100vw - 10em);
@@ -7,4 +8,15 @@
   bottom: 0;
   right: 0;
   position: fixed;
+}
+
+.reviewer_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 1em 1em 1em;
+}
+
+.review_content {
+  margin: 1em;
 }

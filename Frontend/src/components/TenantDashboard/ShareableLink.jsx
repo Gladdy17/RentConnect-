@@ -6,7 +6,6 @@ import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
 function ShareableLink() {
   return(
     <>
-      <h2>Shareable Link:</h2>
       <Paper sx={{height: '100px'}} className="copy-box">
             <Box sx={{p: '20px'}}>
                 RentConnect/my-tenant-page.com

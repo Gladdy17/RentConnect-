@@ -1,0 +1,17 @@
+.rejectButton:hover {
+  background: rgb(220, 68, 68);
+  transition: 0.3s
+}
+
+.rejectButton:focus {
+  background: rgb(220, 68, 68);;
+}
+
+.acceptButton:hover {
+  background: rgb(27, 196, 86);
+  transition: 0.3s
+}
+
+.acceptButton:focus {
+  background: rgb(27, 196, 86);
+}

@@ -1,9 +1,9 @@
 .dashboard_header {
   width: 90%;
-  outline: red solid 1px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  margin: 2.5em;
 }
 
 .header_background {
@@ -14,7 +14,7 @@
 
 .header_content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 5em;
   margin-left: 3em;
 }
@@ -30,12 +30,14 @@
   position: relative;
   z-index: 1000;
 }
-
+/* 
 .header_icons {
   margin-right: 2em;
+  position: fixed;
+  right: 3em;
   display: flex;
   gap: 1em;
-}
+} */
 
 img {
   width: 140px;

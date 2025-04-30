@@ -15,14 +15,14 @@ function Sidenav({ User }) {
           <MyProfBtn to="/dashboard/profile-page" />
           <ViewPropertyBtn to="/dashboard/view-properties" />
           <MyApplicationsBtn to="/dashboard/view-applications" />
-          <AccountSettingsBtn to="/dashboard/account-settings" />
+          {/* <AccountSettingsBtn to="/dashboard/account-settings" /> */}
         </div>
       ) : (
         <div className="landlord">
           <MyProfBtn to="/dashboard/profile-page" />
           <MyProperties to="/dashboard/my-properties" />
           <LandlordApplicationsBtn to="/dashboard/landlord-applications" />
-          <AccountSettingsBtn to="/dashboard/account-settings" />
+          {/* <AccountSettingsBtn to="/dashboard/account-settings" /> */}
         </div>
       )}
     </div>

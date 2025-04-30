@@ -9,14 +9,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-left: #ffffff solid 10px;
+  border-bottom: #388697 solid 6px;
+  z-index: 1000;
+}
+
+.logoutContainer {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin: 3em;
+}
+
+.userName {
+  font-size: 1.5em;
+  font-weight: 300;
 }
 
 .header_logo {
   display: flex;
   padding: 1.5em;
   align-items: center;
-  margin-left: 10em
+  margin-left: 2em
 }
 
 .header_title_Primary {

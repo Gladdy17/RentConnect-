@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import '../styles/viewApplications.css'
 
 const ViewApplications = ({ User }) => {
   const location = useLocation();
@@ -35,7 +36,10 @@ const ViewApplications = ({ User }) => {
   }, [showSuccess]);
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div 
+      style={{ padding: "2rem" }}
+      className="rentalApplicationContainer"
+      >
       {showSuccess && (
         <div style={{
           backgroundColor: "#d4edda",
@@ -43,7 +47,7 @@ const ViewApplications = ({ User }) => {
           padding: "1rem",
           borderRadius: "5px",
           marginBottom: "1rem",
-          border: "1px solid #c3e6cb",
+          border: "1px solidrgb(0, 0, 0)",
           textAlign: "center",
           fontWeight: "bold"
         }}>
@@ -56,11 +60,15 @@ const ViewApplications = ({ User }) => {
       {applications.length === 0 ? (
         <p>You haven’t applied to any rentals yet.</p>
       ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
+        <ul 
+        style={{ listStyle: "none", padding: 0 }}
+        className="applicationList"
+        >
           {applications.map((app) => (
             <li
-              key={app.id}
-              style={{
+                className="applicationCard"
+                key={app.id}
+                style={{
                 border: "1px solid #ccc",
                 borderRadius: "8px",
                 padding: "1rem",

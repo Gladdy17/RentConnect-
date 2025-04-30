@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import '../../styles/buttonStyles.css'
 
 function ApplyButton({ propertyId, User }) {
   const navigate = useNavigate();
@@ -26,11 +27,12 @@ function ApplyButton({ propertyId, User }) {
 
   return (
     <button
+      className="meet"
       onClick={handleApply}
       style={{
         marginTop: "1rem",
         padding: "0.5rem 1rem",
-        backgroundColor: "#28a745",
+        backgroundColor: "#388697",
         color: "#fff",
         border: "none",
         borderRadius: "4px",
