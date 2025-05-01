@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FileUpload from "../fileUpload";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FormControl, FormHelperText, Input, InputLabel, Button } from "@mui/material";
 import "../../styles/RenterApplicationForm.css";
@@ -256,7 +257,13 @@ return (
           <FormHelperText id="payment_type_helper">Select your payment type.</FormHelperText>
           {errors.paymentType && <p className="error-text">{errors.paymentType}</p>}
         </FormControl>
+
+        <FormControl>
+          <FileUpload onFilesSelected={(selectedFiles) => setDocuments([...selectedFiles])} />
+        </FormControl>
+
       </div>
+
 
       <Button
         type="submit"
